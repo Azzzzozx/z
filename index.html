@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>واجهة لعبة XLD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding-top: 40px;
+    }
+
+    .card {
+      background-color: #121212;
+      border-radius: 10px;
+      padding: 15px;
+      width: 220px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .card img.preview {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .title {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .stats {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+
+    .stat img {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
+    .editor {
+      margin-top: 25px;
+      background-color: #2a2a2a;
+      padding: 15px;
+      border-radius: 10px;
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .editor input {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+    }
+
+    .editor button {
+      padding: 8px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .editor button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img class="preview" src="https://tr.rbxcdn.com/180DAY-61371433db1da9e4e18ad47fc112a815/256/256/Image/Webp/noFilter" alt="XLD Map">
+    <div class="title">XLD مملكة</div>
+    <div class="stats">
+      <div class="stat">
+        <img src="visitors.jpg" alt="الزائرين">
+        13
+      </div>
+      <div class="stat">
+        <img src="like.jpg" alt="الإعجاب">
+        22%
+      </div>
+    </div>
+  </div>
+
+  <div class="editor">
+    <input type="text" id="mapName" placeholder="اسم الماب">
+    <input type="text" id="mapImage" placeholder="رابط صورة الماب">
+    <input type="number" id="visitorsCount" placeholder="عدد الموجودين">
+    <input type="number" id="likesPercent" placeholder="نسبة اللايكات (%)">
+    <button onclick="applyChanges()">تم</button>
+  </div>
+
+  <script>
+    function applyChanges() {
+      const name = document.getElementById("mapName").value;
+      const img = document.getElementById("mapImage").value;
+      const visitors = document.getElementById("visitorsCount").value;
+      const likes = document.getElementById("likesPercent").value;
+
+      if(name) document.querySelector(".title").innerText = name;
+      if(img) document.querySelector(".preview").src = img;
+      if(visitors) document.querySelectorAll(".stat")[0].innerHTML = '<img src="visitors.jpg" alt="الزائرين"> ' + visitors;
+      if(likes) document.querySelectorAll(".stat")[1].innerHTML = '<img src="like.jpg" alt="الإعجاب"> ' + likes + '%';
+    }
+  </script>
+
+</body>
+</html>
